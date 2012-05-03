@@ -41,6 +41,13 @@ $ find . | matcher order
 ```viml
 let path_to_matcher = "/path/to/matcher"
 
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
 function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   " the Command-T matcher doesn't do regex. Return now if that was requested.
   if a:regex == 1
