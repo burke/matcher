@@ -81,3 +81,4 @@ let g:ctrlp_match_func = { 'match': 'g:GoodMatch' }
 # Contributing
 
 * Fork branch commit push pullrequest
+* I'm bad at github notifications. Send me an email too at burke@burkelibbey.org
