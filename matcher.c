@@ -1,5 +1,5 @@
 /*
- * Most of this is borrow from Command-T:
+ * Most of this is borrowed from Command-T:
  *   https://github.com/wincent/Command-T/blob/4b2da2fb/ruby/command-t/match.c
  * The rest is also under standard 2-clause BSD license, 2012 Burke Libbey
  */
@@ -179,35 +179,3 @@ void score_list(char *abbrev,
 
 }
 
-int main(int argc, char *argv[])
-{
-  int limit;
-  int show_dotfiles;
-  char *abbrev;
-  char *strings[20000];
-  int num_strings = 0;
-
-  if (argc < 3) {
-    printf("Usage: matcher <limit :: Int> <show_dotfiles :: {1 | 0}> <search :: String>\n");
-    return 1;
-  }
-
-  if (argc == 3) {
-    printf("...");
-    return 0;
-  }
-
-  limit  = atoi(argv[1]);
-  show_dotfiles = atoi(argv[2]);
-
-  abbrev = argv[3];
-
-  for (num_strings = 0; num_strings < 20000; num_strings++) {
-    strings[num_strings] = malloc(1024 * sizeof(char));
-    fgets(strings[num_strings], 1023, stdin);
-    if (feof(stdin)) break;
-  }
-
-  score_list(abbrev, strings, num_strings, show_dotfiles, limit);
-  return 0;
-}

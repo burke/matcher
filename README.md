@@ -11,18 +11,29 @@ $ make
 
 # Usage
 
-Matcher takes three arguments, then a list of strings to match against via stdin.
+Matcher searches for a string in a list of filenames, and returns the
+ones it thinks you are most likely referring to. It works exactly like
+fuzzy-finder, Command-T, and so on.
 
-The arguments are:
+### Usage:
 
-1. limit: The number of matches to return
-2. show_dotfiles: 1 if you want dotfiles included, 0 otherwise
-3. search: the actual string the user wants to search for in the editor or wherever.
-
+```shell
+$ matcher [options] <search>
 ```
-$ matcher <limit :: Int> <show_dotfiles :: {1 | 0}> <search :: String>
-# eg.
-$ find . | matcher 10 0 customer.rb
+
+#### Options:
+
+* `--limit`: The number of matches to return (default 10)
+* `--no-dotfiles`: Dotfiles will never be returned (by default, they may
+  be)
+* `--manifest`: Specify a file containing the list of files to scan. If
+  none given, matcher will read the list from stdin.
+
+### Examples
+
+```shell
+$ matcher --limit 20 --no-dotfiles --manifest filelist.txt customer.rb
+$ find . | matcher order
 ```
 
 # Using with CtrlP.vim
