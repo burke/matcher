@@ -4,9 +4,11 @@ This is a standalone library that does the same fuzzy-find matching as Command-T
 
 # Installation
 
-```
+```shell
 $ make
 # move `matcher` somewhere useful
+$ make install
+# make install will install it to /usr/local/bin.
 ```
 
 # Usage
