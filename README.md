@@ -39,6 +39,8 @@ $ find . | matcher order
 # Using with CtrlP.vim
 
 ```viml
+let path_to_matcher = "/path/to/matcher"
+
 function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   " the Command-T matcher doesn't do regex. Return now if that was requested.
   if a:regex == 1
@@ -54,7 +56,7 @@ function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
 
   " a:mmode is currently ignored. In the future, we should probably do
   " something about that. the matcher behaves like "full-line".
-  let cmd = "/Users/burke/matcher/matcher --limit " . a:limit . " --manifest " . ctrlp#utils#cachefile() . " "
+  let cmd = path_to_matcher . " --limit " . a:limit . " --manifest " . ctrlp#utils#cachefile() . " "
   if ! g:ctrlp_dotfiles
     let cmd = cmd . "--no-dotfiles "
   endif
