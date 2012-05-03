@@ -71,10 +71,10 @@ int main(int argc, char *argv[])
   char *strings[20000];
   int num_strings = 0;
 
-	FILE *fp = stdin;
-	if (globalArgs.manifest) {
-		fp = fopen(globalArgs.manifest, "r");
-	}
+  FILE *fp = stdin;
+  if (globalArgs.manifest) {
+    fp = fopen(globalArgs.manifest, "r");
+  }
 
   for (num_strings = 0; num_strings < 20000; num_strings++) {
     strings[num_strings] = malloc(1024 * sizeof(char));
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
     if (feof(fp)) break;
   }
 
-	fclose(fp);
+  fclose(fp);
 
   score_list(globalArgs.search,
              strings,
