@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
+#include <ctype.h>
 
 #include "matcher.h"
 
@@ -61,7 +62,13 @@ void parse_arguments(int argc, char *argv[])
     opt = getopt_long(argc, argv, optString, longOpts, &longIndex);
   }
 
+	
   globalArgs.search = argv[argc - 1];
+	int i = 0;
+	while(globalArgs.search[i] != '\0'){
+		globalArgs.search[i] = tolower(globalArgs.search[i]);
+		i++;
+	}
 }
 
 int main(int argc, char *argv[])
