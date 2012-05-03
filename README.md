@@ -41,7 +41,7 @@ $ find . | matcher order
 # Using with CtrlP.vim
 
 ```viml
-let path_to_matcher = "/path/to/matcher"
+let g:path_to_matcher = "/path/to/matcher"
 
 let g:ctrlp_user_command = {
   \ 'types': {
@@ -65,7 +65,7 @@ function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
 
   " a:mmode is currently ignored. In the future, we should probably do
   " something about that. the matcher behaves like "full-line".
-  let cmd = path_to_matcher . " --limit " . a:limit . " --manifest " . ctrlp#utils#cachefile() . " "
+  let cmd = g:path_to_matcher . " --limit " . a:limit . " --manifest " . ctrlp#utils#cachefile() . " "
   if ! g:ctrlp_dotfiles
     let cmd = cmd . "--no-dotfiles "
   endif
