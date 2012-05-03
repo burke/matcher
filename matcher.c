@@ -187,13 +187,19 @@ int main(int argc, char *argv[])
   char *strings[20000];
   int num_strings = 0;
 
-  if (argc < 4) {
+  if (argc < 3) {
     printf("Usage: matcher <limit :: Int> <show_dotfiles :: {1 | 0}> <search :: String>\n");
     return 1;
   }
 
+  if (argc == 3) {
+    printf("...");
+    return 0;
+  }
+
   limit  = atoi(argv[1]);
   show_dotfiles = atoi(argv[2]);
+
   abbrev = argv[3];
 
   for (num_strings = 0; num_strings < 20000; num_strings++) {
