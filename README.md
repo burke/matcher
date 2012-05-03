@@ -4,8 +4,10 @@ This is a standalone library that does the same fuzzy-find matching as Command-T
 
 # Installation
 
-    $ make
-    # move `matcher` somewhere useful
+```
+$ make
+# move `matcher` somewhere useful
+```
 
 # Usage
 
@@ -17,9 +19,11 @@ The arguments are:
 2. show_dotfiles: 1 if you want dotfiles included, 0 otherwise
 3. search: the actual string the user wants to search for in the editor or wherever.
 
-    $ matcher <limit :: Int> <show_dotfiles :: {1 | 0}> <search :: String>
-    # eg.
-    $ find . | matcher 10 0 customer.rb
+```
+$ matcher <limit :: Int> <show_dotfiles :: {1 | 0}> <search :: String>
+# eg.
+$ find . | matcher 10 0 customer.rb
+```
 
 # Bugs
 
