@@ -27,7 +27,7 @@ $ find . | matcher 10 0 customer.rb
 
 # Using with CtrlP.vim
 
-```vimscript
+```viml
 let g:ctrlp_dotfiles = 0
 function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   " the Command-T matcher doesn't do regex. Return now if that was requested.
