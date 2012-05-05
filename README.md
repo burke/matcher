@@ -58,6 +58,10 @@ function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
     call writefile(a:items, cachefile)
   endif
 
+  if !filereadable(cachefile)
+    return []
+  endif
+
   " a:mmode is currently ignored. In the future, we should probably do
   " something about that. the matcher behaves like "full-line".
   let cmd = g:path_to_matcher.' --limit '.a:limit.' --manifest '.cachefile.' '
@@ -67,7 +71,7 @@ function! g:GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
   endif
 
   let cmd = cmd.a:str
-  return split(system(cmd))
+  return split(system(cmd), "\n")
 
 endfunction
 
