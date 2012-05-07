@@ -25,7 +25,7 @@ static const struct option longOpts[] = {
 /* Display program usage, and exit. */
 void display_usage(void)
 {
-  puts("Usage: matcher [options] <search>\n");
+  puts("Usage: matcher [--no-dotfiles] [--limit num] [--manifest filename] <query>\n");
   exit( EXIT_FAILURE );
 }
 
