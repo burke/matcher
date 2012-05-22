@@ -11,4 +11,4 @@ $(EXENAME): main.c matcher.c
 .PHONY: install
 install: $(EXENAME)
 	install -d $(DESTDIR)$(PREFIX)
-	install -m 0755 $@ $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 $< $(DESTDIR)$(PREFIX)/bin
