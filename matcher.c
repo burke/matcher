@@ -174,7 +174,9 @@ void score_list(char *abbrev,
 
   if (num_strs < limit) limit = num_strs;
   for (i = 0; i < limit; i++) {
-    printf("%s", items[i].ptr);
+    if (items[i].score > 0) {
+      printf("%s", items[i].ptr);
+    }
   }
 
 }
