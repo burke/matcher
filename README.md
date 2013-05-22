@@ -71,22 +71,6 @@ function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
 endfunction
 ```
 
-# Using with zsh
-
-```shell
-_matcher_complete() {
-  git ls-files | /Users/burke/bin/matcher -l20 ${words[CURRENT]} | while read line; do
-    compadd -U "$line"
-  done
-  compstate[insert]=menu # no expand
-}
-
-zle -C matcher-complete 'menu-select' _matcher_complete
-
-bindkey '^X^T' matcher-complete # C-x C-t to find matches for the search under the cursor
-# bindkey '^T' matcher-complete # C-t to find matches for the search under the cursor
-```
-
 
 # Bugs
 
