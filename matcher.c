@@ -162,7 +162,9 @@ void score_list(char *abbrev,
                 int limit)
 {
   long i;
+  long abbrev_len;
 
+  abbrev_len = strlen(abbrev);
   item_t items[num_strs];
 
   for (i = 0; i < num_strs; i++) {
@@ -174,7 +176,8 @@ void score_list(char *abbrev,
 
   if (num_strs < limit) limit = num_strs;
   for (i = 0; i < limit; i++) {
-    if (items[i].score > 0) {
+    // Filter out 0 score items unless no search term has been passed in
+    if (items[i].score > 0 || abbrev_len == 0) {
       printf("%s", items[i].ptr);
     }
   }

@@ -62,8 +62,8 @@ void parse_arguments(int argc, char *argv[])
     opt = getopt_long(argc, argv, optString, longOpts, &longIndex);
   }
 
-	
-  globalArgs.search = argv[argc - 1];
+  globalArgs.search = (optind < argc) ? argv[optind] : "";
+
 	int i = 0;
 	while(globalArgs.search[i] != '\0'){
 		globalArgs.search[i] = tolower(globalArgs.search[i]);
