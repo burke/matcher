@@ -24,7 +24,7 @@ typedef struct
 #ifdef _WIN32
 #define IS_PATHSEP(c) (c == '\\' || c == '/')
 #else
-#define IS_PATHSEP(c) (c == '\\')
+#define IS_PATHSEP(c) (c == '/')
 #endif
 
 double recursive_match(matchinfo_t *m,  // sharable meta-data
