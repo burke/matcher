@@ -21,6 +21,12 @@ typedef struct
   int     never_show_dot_files;   // boolean
 } matchinfo_t;
 
+#ifdef _WIN32
+#define IS_PATHSEP(c) (c == '\\' || c == '/')
+#else
+#define IS_PATHSEP(c) (c == '\\')
+#endif
+
 double recursive_match(matchinfo_t *m,  // sharable meta-data
                        long str_idx,    // where in the path string to start
                        long abbrev_idx, // where in the search string to start
@@ -41,7 +47,7 @@ double recursive_match(matchinfo_t *m,  // sharable meta-data
     for (j = str_idx; j < m->str_len; j++, str_idx++) {
       char d = m->str_p[j];
       if (d == '.') {
-        if (j == 0 || m->str_p[j - 1] == '/') {
+        if (j == 0 || IS_PATHSEP(m->str_p[j - 1])) {
           m->dot_file = 1;        // this is a dot-file
           if (dot_search)         // and we are searching for a dot
             dot_file_match = 1; // so this must be a match
@@ -60,7 +66,7 @@ double recursive_match(matchinfo_t *m,  // sharable meta-data
           double factor = 1.0;
           char last = m->str_p[j - 1];
           char curr = m->str_p[j]; // case matters, so get again
-          if (last == '/')
+          if (IS_PATHSEP(last))
             factor = 0.9;
           else if (last == '-' ||
                   last == '_' ||
@@ -124,7 +130,7 @@ double score(char *abbrev,      // user input string to search for
     if (!m.always_show_dot_files) {
       for (i = 0; i < m.str_len; i++) {
         char c = m.str_p[i];
-        if (c == '.' && (i == 0 || m.str_p[i - 1] == '/')) {
+        if (c == '.' && (i == 0 || IS_PATHSEP(m.str_p[i - 1]))) {
           score = 0.0;
           break;
         }
